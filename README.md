@@ -442,8 +442,8 @@ Property attributes should be explicitly listed, and will help new programmers w
 
 ```objc
 @property (weak, nonatomic) IBOutlet UIView *containerView;
-@property (copy, nonatomic, nonnull) NSString *tutorialName;
-@property (assign, nonatomic) NSInteger readersNumber;
+@property (strong, nonatomic) NSString *tutorialName;
+@property (copy, nonatomic, nonnull, readonly) NSArray *someArray;
 ```
 
 **Not Preferred:**
@@ -451,7 +451,7 @@ Property attributes should be explicitly listed, and will help new programmers w
 ```objc
 @property (nonatomic, weak) IBOutlet UIView *containerView;
 @property (nonatomic) NSString *tutorialName;
-@property (nonatomic, assign) NSInteger readersNumber;
+@property (readonly, nonatomic, copy, nonnull) NSArray *someArray;
 ```
 
 Properties with mutable counterparts (e.g. NSString) should prefer `copy` instead of `strong`. 
