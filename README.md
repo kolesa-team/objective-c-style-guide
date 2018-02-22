@@ -343,7 +343,7 @@ UIButton *settingsButton;
 UIButton *setBut;
 ```
 
-A three letter prefix should always be used for class names and constants, however may be omitted for Core Data entity names. For any official raywenderlich.com books, starter kits, or tutorials, the prefix 'RWT' should be used.
+A three or two letter prefix should always be used for class names and constants, however may be omitted for Core Data entity names.
 
 Constants should be camel-case with all words capitalized and prefixed by the related class name for clarity.
 
@@ -377,7 +377,7 @@ id varnm;
 
 When using properties, instance variables should always be accessed and mutated using `self.`. This means that all properties will be visually distinct, as they will all be prefaced with `self.`. 
 
-An exception to this: inside initializers, the backing instance variable (i.e. _variableName) should be used directly to avoid any potential side effects of the getters/setters.
+An exception to this: inside initializers, the backing instance variable (i.e. `_variableName`) should be used directly to avoid any potential side effects of the getters/setters.
 
 Local variables should not contain underscores.
 
@@ -442,7 +442,7 @@ Property attributes should be explicitly listed, and will help new programmers w
 
 ```objc
 @property (weak, nonatomic) IBOutlet UIView *containerView;
-@property (strong, nonatomic) NSString *tutorialName;
+@property (strong, nonatomic) SomeClass *someClassObject;
 @property (copy, nonatomic, nonnull, readonly) NSArray *someArray;
 ```
 
@@ -450,11 +450,11 @@ Property attributes should be explicitly listed, and will help new programmers w
 
 ```objc
 @property (nonatomic, weak) IBOutlet UIView *containerView;
-@property (nonatomic) NSString *tutorialName;
+@property (nonatomic) SomeClass *someClassObject;
 @property (readonly, nonatomic, copy, nonnull) NSArray *someArray;
 ```
 
-Properties with mutable counterparts (e.g. NSString) should prefer `copy` instead of `strong`. 
+Properties with mutable counterparts (e.g. `NSString`) should prefer `copy` instead of `strong`. 
 Why? Even if you declared a property as `NSString` somebody might pass in an instance of an `NSMutableString` and then change it without you noticing that.  
 
 **Preferred:**
@@ -486,7 +486,6 @@ UIApplication.sharedApplication.delegate;
 ```objc
 NSInteger arrayCount = [self.array count];
 [view setBackgroundColor:[UIColor orangeColor]];
-[view setBackgroundColor:UIColor.orangeColor];
 [UIApplication sharedApplication].delegate;
 ```
 
