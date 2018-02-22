@@ -436,13 +436,14 @@ Direct access to instance variables that 'back' properties should be avoided exc
 
 ## Property Attributes
 
-Property attributes should be explicitly listed, and will help new programmers when reading the code.  The order of properties should be storage then atomicity, which is consistent with automatically generated code when connecting UI elements from Interface Builder.
+Property attributes should be explicitly listed, and will help new programmers when reading the code. The order of properties should be: `storage` (weak, strong, assign, copy), `atomicity` (atomic, nonatomic), `nullability` (nullable, nonnull), `access` (readonly, readwrite), and `getter/setter`.
 
 **Preferred:**
 
 ```objc
 @property (weak, nonatomic) IBOutlet UIView *containerView;
-@property (strong, nonatomic) NSString *tutorialName;
+@property (copy, nonatomic, nonnull) NSString *tutorialName;
+@property (assign, nonatomic) NSInteger readersNumber;
 ```
 
 **Not Preferred:**
@@ -450,6 +451,7 @@ Property attributes should be explicitly listed, and will help new programmers w
 ```objc
 @property (nonatomic, weak) IBOutlet UIView *containerView;
 @property (nonatomic) NSString *tutorialName;
+@property (nonatomic, assign) NSInteger readersNumber;
 ```
 
 Properties with mutable counterparts (e.g. NSString) should prefer `copy` instead of `strong`. 
