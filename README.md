@@ -4,7 +4,7 @@ This style guide outlines the coding conventions for "Колёса | Крыша 
 
 ## Introduction
 
-This style guide is forked from RayWenderlich.com official Objective-C style guide.
+This style guide is a slightly modified and supplemented version of the official raywenderlich.com Objective-C style guide.
 
 ## Background
 
