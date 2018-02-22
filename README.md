@@ -40,7 +40,6 @@ Here are some of the documents from Apple that informed the style guide. If some
 * [Smiley Face](#smiley-face)
 * [Xcode Project](#xcode-project)
 
-
 ## Language
 
 US English should be used.
@@ -54,7 +53,6 @@ UIColor *myColor = UIColor.whiteColor;
 ```objc
 UIColor *myColour = UIColor.whiteColor;
 ```
-
 
 ## Code Organization
 
@@ -102,15 +100,17 @@ Use `#pragma mark -` to categorize methods in functional groupings and protocol/
 
 ## Spacing
 
-* Indent using 2 spaces (this conserves space in print and makes line wrapping less likely). Never indent with tabs. Be sure to set this preference in Xcode.
+* Indent using 4 spaces (This is a default in Xcode. You can verify it in `Preferences → Text Editing → Indentation`). Never indent with tabs.
+* Better not to have lines exceeding 100 characters. The option `Page guide at column: 100` from `Preferences → Text Editing → Editing` can help in this.
 * Method braces and other braces (`if`/`else`/`switch`/`while` etc.) always open on the same line as the statement but close on a new line.
+* Any piece of documentation or comment should be preceeded with a blank line. Except the cases when such a block immediately follows an opening curly brace.
 
 **Preferred:**
 ```objc
 if (user.isHappy) {
-  //Do something
+    //Do something
 } else {
-  //Do something else
+    //Do something else
 }
 ```
 
@@ -127,7 +127,7 @@ else {
 
 * There should be exactly one blank line between methods to aid in visual clarity and organization. Whitespace within methods should separate functionality, but often there should probably be new methods.
 * Prefer using auto-synthesis. But if necessary, `@synthesize` and `@dynamic` should each be declared on new lines in the implementation.
-* Colon-aligning method invocation should often be avoided.  There are cases where a method signature may have >= 3 colons and colon-aligning makes the code more readable. Please do **NOT** however colon align methods containing blocks because Xcode's indenting makes it illegible.
+* Colon-aligning method invocation should often be avoided. There are cases where a method signature may have >= 3 colons and colon-aligning makes the code more readable. Please do **NOT** however colon align methods containing blocks because Xcode's indenting makes it illegible.
 
 **Preferred:**
 
@@ -151,6 +151,172 @@ else {
                  completion:^(BOOL finished) {
                      // something
                  }];
+```
+
+* To boost readability, control flow blocks should be followed by a blank line. It is optional to have an empty line before the block.
+
+**Preferred:**
+
+```objc
+// something
+if (condition) {
+    // Do something
+}
+
+// something
+```
+
+**Not Preferred**
+
+```objc
+// something
+if (condition) {
+    // Do something
+}
+// something
+```
+
+* Unless `return` is the only statement in the block it should always be preceded by a blank line.
+
+**Preferred:**
+
+```objc
+­- (BOOL)isTrue {
+    return YES;
+}
+
+­- (BOOL)isComplicated {
+    BOOL retVal = NO;
+    
+    return retVal;
+}
+```
+
+**Not Preferred:**
+
+```objc
+- (BOOL)isTrue {
+
+    return YES;
+}
+
+­- (BOOL)isComplicated {
+    BOOL retVal = NO;
+    return retVal;
+}
+```
+
+* In case of wrapping a method with blocks, the statements in the blocks should be indented by additional 4 spaces.
+
+**Preferred:**
+
+```objc
+[[KKSomeClass sharedInstance] someLongMethod:KKSomeMethod
+    parameters:parameters
+    success:^(id obj) {
+        // something
+    } failure:^(id obj) {
+        // something
+    }];
+```
+
+**Not Preferred:**
+
+```objc
+[[KKSomeClass sharedInstance] someLongMethod:KKSomeMethod
+    parameters:parameters
+    success:^(id obj) {
+    // something
+    } failure:^(id obj) {
+    // something
+    }];
+```
+
+* When wrapping a method signature, which cannot be colon-aligned, all lines starting with the second one should be indented by 8 spaces.
+
+**Preferred:**
+
+```objc
+­- (void)application:(UIApplication *)application
+        performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem
+        completionHandler:(void (^)(BOOL))completionHandler {
+    // something
+}
+```
+
+**Not Preferred:**
+
+```objc
+­- (void)application:(UIApplication *)application
+    performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem
+    completionHandler:(void (^)(BOOL))completionHandler {
+    // something
+}
+```
+
+**Not Preferred:**
+
+```objc
+­- (void)application:(UIApplication *)application
+performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem
+completionHandler:(void (^)(BOOL))completionHandler {
+    // something
+}
+```
+
+* There should always be a blank line after `@interface`/`@implementation` and before `@end`.
+
+**Preferred:**
+
+```objc
+@interface KKSomeClass : NSObject <KKSomeProtocol>
+
+// something
+
+@end
+```
+
+**Preferred:**
+
+```objc
+@implementation KKSomeClass
+
+@synthesize someProperty = _someProperty;
+// something
+
+@end
+```
+
+**Not Preferred:**
+
+```objc
+@interface KKSomeClass : NSObject <KKSomeProtocol>
+// something
+@end
+```
+
+**Not Preferred:**
+
+```objc
+@implementation KKSomeClass
+
+@synthesize someProperty = _someProperty;
+// something
+@end
+```
+
+* When declaring an `id` property or variable there should **NOT** be a space between `id` and `<`.
+
+**Preferred:**
+
+```objc
+@property (strong, nonatomic, nonnull) id<SomeProtocol> someProperty;
+```
+
+**Not Preferred:**
+
+```objc
+@property (strong, nonatomic, nonnull) id <SomeProtocol> someProperty;
 ```
 
 ## Comments
