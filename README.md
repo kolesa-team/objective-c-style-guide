@@ -40,18 +40,19 @@ Here are some of the documents from Apple that informed the style guide. If some
 * [Smiley Face](#smiley-face)
 * [Xcode Project](#xcode-project)
 
+
 ## Language
 
 US English should be used.
 
 **Preferred:**
 ```objc
-UIColor *myColor = [UIColor whiteColor];
+UIColor *myColor = UIColor.whiteColor;
 ```
 
 **Not Preferred:**
 ```objc
-UIColor *myColour = [UIColor whiteColor];
+UIColor *myColour = UIColor.whiteColor;
 ```
 
 
