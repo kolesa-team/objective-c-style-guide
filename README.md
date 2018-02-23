@@ -623,10 +623,9 @@ switch (menuType) {
 
 ## Private Properties
 
-Private properties should be declared in class extensions (anonymous categories) in the implementation file of a class. Named categories (such as `RWTPrivate` or `private`) should never be used unless extending another class.   The Anonymous category can be shared/exposed for testing using the <headerfile>+Private.h file naming convention.
+Private properties should be declared in class extensions (anonymous categories) in the implementation file of a class. Named categories (such as `RWTPrivate` or `private`) should never be used unless extending another class. The Anonymous category can be shared/exposed for testing using the <headerfile>+Private.h file naming convention.
 
 **For Example:**
-
 ```objc
 @interface RWTDetailViewController ()
 
@@ -644,14 +643,12 @@ Objective-C uses `YES` and `NO`. Therefore `true` and `false` should only be use
 This allows for more consistency across files and greater visual clarity.
 
 **Preferred:**
-
 ```objc
 if (someObject) {}
 if (![anotherObject boolValue]) {}
 ```
 
 **Not Preferred:**
-
 ```objc
 if (someObject == nil) {}
 if ([anotherObject boolValue] == NO) {}
@@ -683,8 +680,7 @@ if (!error)
     return success;
 ```
 
-or
-
+**Not Preferred:**
 ```objc
 if (!error) return success;
 ```
@@ -712,7 +708,6 @@ result = a > b ? x = c > d ? c : d : y;
 ## Init Methods
 
 Init methods should follow the convention provided by Apple's generated code template. A return type of 'instancetype' should also be used instead of 'id'.
-
 ```objc
 - (instancetype)init {
     self = [super init];
@@ -723,8 +718,6 @@ Init methods should follow the convention provided by Apple's generated code tem
     return self;
 }
 ```
-
-See [Class Constructor Methods](#class-constructor-methods) for link to article on instancetype.
 
 ## Class Constructor Methods
 
@@ -742,7 +735,7 @@ More information on instancetype can be found on [NSHipster.com](http://nshipste
 
 ## CGRect Functions
 
-When accessing the `x`, `y`, `width`, or `height` of a `CGRect`, always use the [`CGGeometry` functions](http://developer.apple.com/library/ios/#documentation/graphicsimaging/reference/CGGeometry/Reference/reference.html) instead of direct struct member access. From Apple's `CGGeometry` reference:
+When accessing the `x`, `y`, `width`, or `height` of a `CGRect`, always use the [`CGGeometry` functions](https://developer.apple.com/documentation/coregraphics/cggeometry) instead of direct struct member access. From Apple's `CGGeometry` reference:
 
 > All functions described in this reference that take CGRect data structures as inputs implicitly standardize those rectangles before calculating their results. For this reason, your applications should avoid directly reading and writing the data stored in the CGRect data structure. Instead, use the functions described here to manipulate rectangles and to retrieve their characteristics.
 
@@ -784,7 +777,6 @@ When coding with conditionals, the left hand margin of the code should be the "g
 ```
 
 **Not Preferred:**
-
 ```objc
 - (void)someMethod {
     if ([someOther boolValue]) {
@@ -835,21 +827,21 @@ This will prevent [possible and sometimes prolific crashes](http://cocoasamurai.
 
 ## Line Breaks
 
-Line breaks are an important topic since this style guide is focused for print and online readability.
-
 For example:
 ```objc
 self.productsRequest = [[SKProductsRequest alloc] initWithProductIdentifiers:productIdentifiers];
 ```
-A long line of code like this should be carried on to the second line adhering to this style guide's Spacing section (two spaces).
+
+A long line of code like this should be carried on to the second line adhering to this style guide's Spacing section.
+
 ```objc
 self.productsRequest = [[SKProductsRequest alloc] 
-  initWithProductIdentifiers:productIdentifiers];
+    initWithProductIdentifiers:productIdentifiers];
 ```
 
 ## Smiley Face
 
-Smiley faces are a very prominent style feature of the raywenderlich.com site! It is very important to have the correct smile signifying the immense amount of happiness and excitement for the coding topic. The end square bracket is used because it represents the largest smile able to be captured using ascii art. A half-hearted smile is represented if an end parenthesis is used, and thus not preferred.
+It is very important to have the correct smile signifying the immense amount of happiness and excitement for the coding topic. The end square bracket is used because it represents the largest smile able to be captured using ascii art. A half-hearted smile is represented if an end parenthesis is used, and thus not preferred.
 
 **Preferred:**
 ```objc
@@ -871,12 +863,9 @@ When possible, always turn on "Treat Warnings as Errors" in the target's Build S
 
 If ours doesn't fit your tastes, have a look at some other style guides:
 
+* [Google](http://google.github.io/styleguide/objcguide.html)
 * [Robots & Pencils](https://github.com/RobotsAndPencils/objective-c-style-guide)
 * [New York Times](https://github.com/NYTimes/objective-c-style-guide)
-* [Google](http://google-styleguide.googlecode.com/svn/trunk/objcguide.xml)
-* [GitHub](https://github.com/github/objective-c-conventions)
-* [Adium](https://trac.adium.im/wiki/CodingStyle)
 * [Sam Soffes](https://gist.github.com/soffes/812796)
 * [CocoaDevCentral](http://cocoadevcentral.com/articles/000082.php)
-* [Luke Redpath](http://lukeredpath.co.uk/blog/my-objective-c-style-guide.html)
 * [Marcus Zarra](http://www.cimgf.com/zds-code-style-guide/)
