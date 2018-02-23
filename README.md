@@ -130,7 +130,6 @@ else {
 * Colon-aligning method invocation should often be avoided. There are cases where a method signature may have >= 3 colons and colon-aligning makes the code more readable. Please do **NOT** however colon align methods containing blocks because Xcode's indenting makes it illegible.
 
 **Preferred:**
-
 ```objc
 // blocks are easily readable
 [UIView animateWithDuration:1.0 animations:^{
@@ -141,7 +140,6 @@ else {
 ```
 
 **Not Preferred:**
-
 ```objc
 // colon-aligning makes the block indentation hard to read
 [UIView animateWithDuration:1.0
@@ -156,7 +154,6 @@ else {
 * To boost readability, control flow blocks should be followed by a blank line. It is optional to have an empty line before the block.
 
 **Preferred:**
-
 ```objc
 // something
 if (condition) {
@@ -167,7 +164,6 @@ if (condition) {
 ```
 
 **Not Preferred**
-
 ```objc
 // something
 if (condition) {
@@ -179,7 +175,6 @@ if (condition) {
 * Unless `return` is the only statement in the block it should always be preceded by a blank line.
 
 **Preferred:**
-
 ```objc
 ­- (BOOL)isTrue {
     return YES;
@@ -193,7 +188,6 @@ if (condition) {
 ```
 
 **Not Preferred:**
-
 ```objc
 - (BOOL)isTrue {
 
@@ -209,7 +203,6 @@ if (condition) {
 * In case of wrapping a method with blocks, the statements in the blocks should be indented by additional 4 spaces.
 
 **Preferred:**
-
 ```objc
 [[KKSomeClass sharedInstance] someLongMethod:KKSomeMethod
     parameters:parameters
@@ -221,7 +214,6 @@ if (condition) {
 ```
 
 **Not Preferred:**
-
 ```objc
 [[KKSomeClass sharedInstance] someLongMethod:KKSomeMethod
     parameters:parameters
@@ -235,7 +227,6 @@ if (condition) {
 * When wrapping a method signature, which cannot be colon-aligned, all lines starting with the second one should be indented by 8 spaces.
 
 **Preferred:**
-
 ```objc
 ­- (void)application:(UIApplication *)application
         performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem
@@ -245,7 +236,6 @@ if (condition) {
 ```
 
 **Not Preferred:**
-
 ```objc
 ­- (void)application:(UIApplication *)application
     performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem
@@ -255,7 +245,6 @@ if (condition) {
 ```
 
 **Not Preferred:**
-
 ```objc
 ­- (void)application:(UIApplication *)application
 performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem
@@ -267,7 +256,6 @@ completionHandler:(void (^)(BOOL))completionHandler {
 * There should always be a blank line after `@interface`/`@implementation` and before `@end`.
 
 **Preferred:**
-
 ```objc
 @interface KKSomeClass : NSObject <KKSomeProtocol>
 
@@ -277,7 +265,6 @@ completionHandler:(void (^)(BOOL))completionHandler {
 ```
 
 **Preferred:**
-
 ```objc
 @implementation KKSomeClass
 
@@ -288,7 +275,6 @@ completionHandler:(void (^)(BOOL))completionHandler {
 ```
 
 **Not Preferred:**
-
 ```objc
 @interface KKSomeClass : NSObject <KKSomeProtocol>
 // something
@@ -296,7 +282,6 @@ completionHandler:(void (^)(BOOL))completionHandler {
 ```
 
 **Not Preferred:**
-
 ```objc
 @implementation KKSomeClass
 
@@ -308,13 +293,11 @@ completionHandler:(void (^)(BOOL))completionHandler {
 * When declaring an `id` property or variable there should **NOT** be a space between `id` and `<`.
 
 **Preferred:**
-
 ```objc
 @property (strong, nonatomic, nonnull) id<SomeProtocol> someProperty;
 ```
 
 **Not Preferred:**
-
 ```objc
 @property (strong, nonatomic, nonnull) id <SomeProtocol> someProperty;
 ```
@@ -332,13 +315,11 @@ Apple naming conventions should be adhered to wherever possible, especially thos
 Long, descriptive method and variable names are good.
 
 **Preferred:**
-
 ```objc
 UIButton *settingsButton;
 ```
 
 **Not Preferred:**
-
 ```objc
 UIButton *setBut;
 ```
@@ -348,13 +329,11 @@ A three or two letter prefix should always be used for class names and constants
 Constants should be camel-case with all words capitalized and prefixed by the related class name for clarity.
 
 **Preferred:**
-
 ```objc
 static NSTimeInterval const RWTTutorialViewControllerNavigationFadeAnimationDuration = 0.3;
 ```
 
 **Not Preferred:**
-
 ```objc
 static NSTimeInterval const fadetime = 1.7;
 ```
@@ -362,13 +341,11 @@ static NSTimeInterval const fadetime = 1.7;
 Properties should be camel-case with the leading word being lowercase. Use auto-synthesis for properties rather than manual @synthesize statements unless you have good reason.
 
 **Preferred:**
-
 ```objc
 @property (strong, nonatomic) NSString *descriptiveVariableName;
 ```
 
 **Not Preferred:**
-
 ```objc
 id varnm;
 ```
@@ -396,7 +373,6 @@ The usage of the word "and" is reserved.  It should not be used for multiple par
 ```
 
 **Not Preferred:**
-
 ```objc
 -(void)setT:(NSString *)text i:(UIImage *)image;
 - (void)sendAction:(SEL)aSelector :(id)anObject :(BOOL)flag;
@@ -416,7 +392,6 @@ Asterisks indicating pointers belong with the variable, e.g., `NSString *text` n
 Direct access to instance variables that 'back' properties should be avoided except in initializer methods (`init`, `initWithCoder:`, etc…), `dealloc` methods and within custom setters and getters. For more information on using Accessor Methods in Initializer Methods and dealloc, see [here](https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/MemoryMgmt/Articles/mmPractical.html#//apple_ref/doc/uid/TP40004447-SW6).
 
 **Preferred:**
-
 ```objc
 @interface RWTTutorial : NSObject
 
@@ -426,7 +401,6 @@ Direct access to instance variables that 'back' properties should be avoided exc
 ```
 
 **Not Preferred:**
-
 ```objc
 @interface RWTTutorial : NSObject {
   NSString *tutorialName;
@@ -439,7 +413,6 @@ Direct access to instance variables that 'back' properties should be avoided exc
 Property attributes should be explicitly listed, and will help new programmers when reading the code. The order of properties should be: `storage` (weak, strong, assign, copy), `atomicity` (atomic, nonatomic), `nullability` (nullable, nonnull), `access` (readonly, readwrite), and `getter/setter`.
 
 **Preferred:**
-
 ```objc
 @property (weak, nonatomic) IBOutlet UIView *containerView;
 @property (strong, nonatomic) SomeClass *someClassObject;
@@ -447,7 +420,6 @@ Property attributes should be explicitly listed, and will help new programmers w
 ```
 
 **Not Preferred:**
-
 ```objc
 @property (nonatomic, weak) IBOutlet UIView *containerView;
 @property (nonatomic) SomeClass *someClassObject;
@@ -458,13 +430,11 @@ Properties with mutable counterparts (e.g. `NSString`) should prefer `copy` inst
 Why? Even if you declared a property as `NSString` somebody might pass in an instance of an `NSMutableString` and then change it without you noticing that.  
 
 **Preferred:**
-
 ```objc
 @property (copy, nonatomic) NSString *tutorialName;
 ```
 
 **Not Preferred:**
-
 ```objc
 @property (strong, nonatomic) NSString *tutorialName;
 ```
@@ -494,7 +464,6 @@ NSInteger arrayCount = [self.array count];
 `NSString`, `NSDictionary`, `NSArray`, and `NSNumber` literals should be used whenever creating immutable instances of those objects. Pay special care that `nil` values can not be passed into `NSArray` and `NSDictionary` literals, as this will cause a crash.
 
 **Preferred:**
-
 ```objc
 NSArray *names = @[@"Brian", @"Matt", @"Chris", @"Alex", @"Steve", @"Paul"];
 NSDictionary *productManagers = @{@"iPhone": @"Kate", @"iPad": @"Kamal", @"Mobile Web": @"Bill"};
@@ -503,7 +472,6 @@ NSNumber *buildingStreetNumber = @10018;
 ```
 
 **Not Preferred:**
-
 ```objc
 NSArray *names = [NSArray arrayWithObjects:@"Brian", @"Matt", @"Chris", @"Alex", @"Steve", @"Paul", nil];
 NSDictionary *productManagers = [NSDictionary dictionaryWithObjectsAndKeys: @"Kate", @"iPhone", @"Kamal", @"iPad", @"Bill", @"Mobile Web", nil];
@@ -516,7 +484,6 @@ NSNumber *buildingStreetNumber = [NSNumber numberWithInteger:10018];
 Constants are preferred over in-line string literals or numbers, as they allow for easy reproduction of commonly used variables and can be quickly changed without the need for find and replace. Constants should be declared as `static` constants and not `#define`s unless explicitly being used as a macro.
 
 **Preferred:**
-
 ```objc
 static NSString * const RWTAboutViewControllerCompanyName = @"RayWenderlich.com";
 
@@ -524,7 +491,6 @@ static CGFloat const RWTImageThumbnailHeight = 50.0;
 ```
 
 **Not Preferred:**
-
 ```objc
 #define CompanyName @"RayWenderlich.com"
 
@@ -536,7 +502,6 @@ static CGFloat const RWTImageThumbnailHeight = 50.0;
 When using `enum`s, it is recommended to use the new fixed underlying type specification because it has stronger type checking and code completion. The SDK now includes a macro to facilitate and encourage use of fixed underlying types: `NS_ENUM()`
 
 **For Example:**
-
 ```objc
 typedef NS_ENUM(NSInteger, RWTLeftMenuTopItemType) {
   RWTLeftMenuTopItemMain,
@@ -559,7 +524,6 @@ typedef NS_ENUM(NSInteger, RWTGlobalConstants) {
 Older k-style constant definitions should be **avoided** unless writing CoreFoundation C code (unlikely).
 
 **Not Preferred:**
-
 ```objc
 enum GlobalConstants {
   kMaxPinSize = 5,
@@ -567,6 +531,41 @@ enum GlobalConstants {
 };
 ```
 
+In `enum`s 'undefined'/'missing' case should be the first one listed to make it evaluate to `0`. If there is no such a case, then the first option should start from `1`.
+
+**Preferred:**
+```objc
+typedef NS_ENUM(NSInteger, FooType) {
+    FooTypeUndefined,
+    FooTypeFirst,
+    FooTypeSecond
+};
+```
+
+**Not Preferred:**
+```objc
+typedef NS_ENUM(NSInteger, FooType) {
+    FooTypeFirst,
+    FooTypeSecond,
+    FooTypeUndefined
+};
+```
+
+**Preferred:**
+```objc
+typedef NS_ENUM(NSInteger, FooType) {
+    FooTypeFirst = 1,
+    FooTypeSecond
+};
+```
+
+**Not Preferred:**
+```objc
+typedef NS_ENUM(NSInteger, FooType) {
+    FooTypeFirst,
+    FooTypeSecond
+};
+```
 
 ## Case Statements
 
