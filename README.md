@@ -440,16 +440,22 @@ It is recommended to explicitly specify the type of elements in a colletion when
 
 **Preferred:**
 ```objc
-@property (copy, nonatomic, nullable) NSArray<NSNumber *> *someArray;
+@interface SomeClass: NSObject
 
+@property (copy, nonatomic, nullable) NSArray<NSNumber *> *someArray;
 @property (copy, nonatomic, nonnull) NSDictionary<NSString *, NSNumber *> *someDictionary;
+
+@end
 ```
 
 **Not Preferred:**
 ```objc
-@property (copy, nonatomic, nullable) NSArray *someArray;
+@interface SomeClass: NSObject
 
+@property (copy, nonatomic, nullable) NSArray *someArray;
 @property (copy, nonatomic, nonnull) NSDictionary *someDictionary;
+
+@end
 ```
 
 ## Property Attributes
