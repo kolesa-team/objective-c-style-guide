@@ -22,6 +22,7 @@ Here are some of the documents from Apple that informed the style guide. If some
 * [Methods](#methods)
 * [Variables](#variables)
 * [Property Attributes](#property-attributes)
+* [Nullability](#nullability)
 * [Dot-Notation Syntax](#dot-notation-syntax)
 * [Literals](#literals)
 * [Constants](#constants)
@@ -461,6 +462,19 @@ Why? Even if you declared a property as `NSString` somebody might pass in an ins
 ```objc
 @property (strong, nonatomic) NSString *tutorialName;
 ```
+
+## Nullability
+
+When creating a new class, one should always explicitly specify nullability of its properties, method parameters and return values. For new properties in legacy code nullability should be omitted as it will trigger a compiler warning saying that nullability is not specified everywhere.
+
+It is important to understand, though, that assigning `nil` to a `nonnull` property **won't** cause a crash. Compiler as well, **won't** warn if a `nullable` value is assigned to a `nonnull` property. Specifying nullability is a convention to make code more legible and to provide for compatibility of Objective-C and Swift code.
+
+* If a property is `nonnull`, one guarantees that property will never be a `nil`. Otherwise, if it is `nullable`, we say that sometimes property can turn out to be a `nil`.
+* As for return values, `nonnull` makes sure that the method **won't** return a `nil`; `nullable` return value states that in some cases `nil` can be returned by the method.
+* A `nullable` method parameter highlights that a passed value can turn out to be a `nil`, even if it is not explicitly `nullable` (for instance, `NSDictionary` values accessed by keys); Likewise, one specifies `nonnull` when a passed value might **never** be a `nil`.
+
+### Return Values
+### Method Parameters
 
 ## Dot-Notation Syntax
 
