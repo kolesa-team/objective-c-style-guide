@@ -108,9 +108,9 @@ Use `#pragma mark -` to categorize methods in functional groupings and protocol/
 **Preferred:**
 ```objc
 if (user.isHappy) {
-    //Do something
+    // Do something
 } else {
-    //Do something else
+    // Do something else
 }
 ```
 
@@ -118,10 +118,10 @@ if (user.isHappy) {
 ```objc
 if (user.isHappy)
 {
-    //Do something
+    // Do something
 }
 else {
-    //Do something else
+    // Do something else
 }
 ```
 
@@ -133,9 +133,9 @@ else {
 ```objc
 // blocks are easily readable
 [UIView animateWithDuration:1.0 animations:^{
-  // something
+    // something
 } completion:^(BOOL finished) {
-  // something
+    // something
 }];
 ```
 
@@ -403,7 +403,7 @@ Direct access to instance variables that 'back' properties should be avoided exc
 **Not Preferred:**
 ```objc
 @interface RWTTutorial : NSObject {
-  NSString *tutorialName;
+    NSString *tutorialName;
 }
 ```
 
@@ -485,14 +485,12 @@ Constants are preferred over in-line string literals or numbers, as they allow f
 **Preferred:**
 ```objc
 static NSString * const RWTAboutViewControllerCompanyName = @"RayWenderlich.com";
-
 static CGFloat const RWTImageThumbnailHeight = 50.0;
 ```
 
 **Not Preferred:**
 ```objc
 #define CompanyName @"RayWenderlich.com"
-
 #define thumbnailHeight 2
 ```
 
@@ -503,9 +501,9 @@ When using `enum`s, it is recommended to use the new fixed underlying type speci
 **For Example:**
 ```objc
 typedef NS_ENUM(NSInteger, RWTLeftMenuTopItemType) {
-  RWTLeftMenuTopItemMain,
-  RWTLeftMenuTopItemShows,
-  RWTLeftMenuTopItemSchedule
+    RWTLeftMenuTopItemMain,
+    RWTLeftMenuTopItemShows,
+    RWTLeftMenuTopItemSchedule
 };
 ```
 
@@ -513,10 +511,10 @@ You can also make explicit value assignments (showing older k-style constant def
 
 ```objc
 typedef NS_ENUM(NSInteger, RWTGlobalConstants) {
-  RWTPinSizeMin = 1,
-  RWTPinSizeMax = 5,
-  RWTPinCountMin = 100,
-  RWTPinCountMax = 500,
+    RWTPinSizeMin = 1,
+    RWTPinSizeMax = 5,
+    RWTPinCountMin = 100,
+    RWTPinCountMax = 500,
 };
 ```
 
@@ -525,8 +523,8 @@ Older k-style constant definitions should be **avoided** unless writing CoreFoun
 **Not Preferred:**
 ```objc
 enum GlobalConstants {
-  kMaxPinSize = 5,
-  kMaxPinCount = 500,
+    kMaxPinSize = 5,
+    kMaxPinCount = 500,
 };
 ```
 
@@ -572,38 +570,36 @@ Braces are not required for case statements, unless enforced by the complier. Wh
 
 ```objc
 switch (condition) {
-  case 1:
-    // ...
-    break;
-  case 2: {
-    // ...
-    // Multi-line example using braces
-    break;
-  }
-  case 3:
-    // ...
-    break;
-  default: 
-    // ...
-    break;
+    case 1:
+        // ...
+        break;
+    case 2: {
+        // ...
+        // Multi-line example using braces
+        break;
+    }
+    case 3:
+        // ...
+        break;
+    default: 
+        // ...
+        break;
 }
-
 ```
 
 There are times when the same code can be used for multiple cases, and a fall-through should be used. A fall-through is the removal of the 'break' statement for a case thus allowing the flow of execution to pass to the next case value. A fall-through should be commented for coding clarity.
 
 ```objc
 switch (condition) {
-  case 1:
-    // ** fall-through! **
-  case 2:
-    // code executed for values 1 and 2
-    break;
-  default: 
-    // ...
-    break;
+    case 1:
+        // ** fall-through! **
+    case 2:
+        // code executed for values 1 and 2
+        break;
+    default: 
+        // ...
+        break;
 }
-
 ```
 
 When using an enumerated type for a switch, 'default' is not needed.
@@ -613,15 +609,15 @@ When using an enumerated type for a switch, 'default' is not needed.
 RWTLeftMenuTopItemType menuType = RWTLeftMenuTopItemMain;
 
 switch (menuType) {
-  case RWTLeftMenuTopItemMain:
-    // ...
-    break;
-  case RWTLeftMenuTopItemShows:
-    // ...
-    break;
-  case RWTLeftMenuTopItemSchedule:
-    // ...
-    break;
+    case RWTLeftMenuTopItemMain:
+        // ...
+        break;
+    case RWTLeftMenuTopItemShows:
+        // ...
+        break;
+    case RWTLeftMenuTopItemSchedule:
+        // ...
+        break;
 }
 ```
 
@@ -677,14 +673,14 @@ Conditional bodies should always use braces even when a conditional body could b
 **Preferred:**
 ```objc
 if (!error) {
-  return success;
+    return success;
 }
 ```
 
 **Not Preferred:**
 ```objc
 if (!error)
-  return success;
+    return success;
 ```
 
 or
@@ -719,11 +715,12 @@ Init methods should follow the convention provided by Apple's generated code tem
 
 ```objc
 - (instancetype)init {
-  self = [super init];
-  if (self) {
-    // ...
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        // ...
+    }
+
+    return self;
 }
 ```
 
@@ -735,7 +732,9 @@ Where class constructor methods are used, these should always return type of 'in
 
 ```objc
 @interface Airplane
+
 + (instancetype)airplaneWithType:(RWTAirplaneType)type;
+
 @end
 ```
 
@@ -748,7 +747,6 @@ When accessing the `x`, `y`, `width`, or `height` of a `CGRect`, always use the 
 > All functions described in this reference that take CGRect data structures as inputs implicitly standardize those rectangles before calculating their results. For this reason, your applications should avoid directly reading and writing the data stored in the CGRect data structure. Instead, use the functions described here to manipulate rectangles and to retrieve their characteristics.
 
 **Preferred:**
-
 ```objc
 CGRect frame = self.view.frame;
 
@@ -760,7 +758,6 @@ CGRect frame = CGRectMake(0.0, 0.0, width, height);
 ```
 
 **Not Preferred:**
-
 ```objc
 CGRect frame = self.view.frame;
 
@@ -776,14 +773,13 @@ CGRect frame = (CGRect){ .origin = CGPointZero, .size = frame.size };
 When coding with conditionals, the left hand margin of the code should be the "golden" or "happy" path. That is, don't nest `if` statements. Multiple return statements are OK.
 
 **Preferred:**
-
 ```objc
 - (void)someMethod {
-  if (![someOther boolValue]) {
-	return;
-  }
+    if (![someOther boolValue]) {
+	    return;
+    }
 
-  //Do something important
+    // Do something important
 }
 ```
 
@@ -791,9 +787,9 @@ When coding with conditionals, the left hand margin of the code should be the "g
 
 ```objc
 - (void)someMethod {
-  if ([someOther boolValue]) {
-    //Do something important
-  }
+    if ([someOther boolValue]) {
+        // Do something important
+    }
 }
 ```
 
@@ -805,7 +801,7 @@ When methods return an error parameter by reference, switch on the returned valu
 ```objc
 NSError *error;
 if (![self trySomethingWithError:&error]) {
-  // Handle Error
+    // Handle error
 }
 ```
 
@@ -814,7 +810,7 @@ if (![self trySomethingWithError:&error]) {
 NSError *error;
 [self trySomethingWithError:&error];
 if (error) {
-  // Handle Error
+    // Handle error
 }
 ```
 
@@ -825,14 +821,14 @@ Some of Apple’s APIs write garbage values to the error parameter (if non-NULL)
 Singleton objects should use a thread-safe pattern for creating their shared instance.
 ```objc
 + (instancetype)sharedInstance {
-  static id sharedInstance = nil;
+    static id sharedInstance = nil;
 
-  static dispatch_once_t onceToken;
-  dispatch_once(&onceToken, ^{
-    sharedInstance = [[self alloc] init];
-  });
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedInstance = [[self alloc] init];
+    });
 
-  return sharedInstance;
+    return sharedInstance;
 }
 ```
 This will prevent [possible and sometimes prolific crashes](http://cocoasamurai.blogspot.com/2011/04/singletons-your-doing-them-wrong.html).
