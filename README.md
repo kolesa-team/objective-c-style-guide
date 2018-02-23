@@ -108,7 +108,7 @@ Use `#pragma mark -` to categorize methods in functional groupings and protocol/
 * Indent using 4 spaces (This is a default in Xcode. You can verify it in `Preferences → Text Editing → Indentation`). Never indent with tabs.
 * Better not to have lines exceeding 100 characters. The option `Page guide at column: 100` from `Preferences → Text Editing → Editing` can help in this.
 * Method braces and other braces (`if`/`else`/`switch`/`while` etc.) always open on the same line as the statement but close on a new line.
-* Any piece of documentation or comment should be preceeded with a blank line. Except the cases when such a block immediately follows an opening curly brace.
+* Any piece of documentation or comment should be preceded with a blank line. Except the cases when such a block immediately follows an opening curly brace.
 
 **Preferred:**
 ```objc
@@ -295,16 +295,24 @@ completionHandler:(void (^)(BOOL))completionHandler {
 @end
 ```
 
-* When declaring an `id` property or variable there should **NOT** be a space between `id` and `<`.
+* When declaring an `id` property or variable there should **not** be a space between `id` and `<`.
 
 **Preferred:**
 ```objc
+@interface SomeClass: NSObject
+
 @property (strong, nonatomic, nonnull) id<SomeProtocol> someProperty;
+
+@end
 ```
 
 **Not Preferred:**
 ```objc
+@interface SomeClass: NSObject
+
 @property (strong, nonatomic, nonnull) id <SomeProtocol> someProperty;
+
+@end
 ```
 
 ## Comments
@@ -347,7 +355,11 @@ Properties should be camel-case with the leading word being lowercase. Use auto-
 
 **Preferred:**
 ```objc
+@interface SomeClass: NSObject
+
 @property (strong, nonatomic) NSString *descriptiveVariableName;
+
+@end
 ```
 
 **Not Preferred:**
@@ -465,16 +477,24 @@ Property attributes should be explicitly listed, and will help new programmers w
 
 **Preferred:**
 ```objc
+@interface SomeClass: NSObject
+
 @property (weak, nonatomic) IBOutlet UIView *containerView;
 @property (strong, nonatomic) SomeClass *someClassObject;
 @property (copy, nonatomic, nonnull, readonly) NSArray *someArray;
+
+@end
 ```
 
 **Not Preferred:**
 ```objc
+@interface SomeClass: NSObject
+
 @property (nonatomic, weak) IBOutlet UIView *containerView;
 @property (nonatomic) SomeClass *someClassObject;
 @property (readonly, nonatomic, copy, nonnull) NSArray *someArray;
+
+@end
 ```
 
 Properties with mutable counterparts (e.g. `NSString`) should prefer `copy` instead of `strong`. 
@@ -482,12 +502,20 @@ Why? Even if you declared a property as `NSString` somebody might pass in an ins
 
 **Preferred:**
 ```objc
+@interface SomeClass: NSObject
+
 @property (copy, nonatomic) NSString *tutorialName;
+
+@end
 ```
 
 **Not Preferred:**
 ```objc
+@interface SomeClass: NSObject
+
 @property (strong, nonatomic) NSString *tutorialName;
+
+@end
 ```
 
 ## Nullability
