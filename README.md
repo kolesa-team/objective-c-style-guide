@@ -360,9 +360,9 @@ Local variables should not contain underscores.
 
 ## Methods
 
-In method signatures, there should be a space after the method type (-/+ symbol). There should be a space between the method segments (matching Apple's style).  Always include a keyword and be descriptive with the word before the argument which describes the argument.
+In method signatures, there should be a space after the method type (-/+ symbol). There should be a space between the method segments (matching Apple's style). Always include a keyword and be descriptive with the word before the argument which describes the argument.
 
-The usage of the word "and" is reserved.  It should not be used for multiple parameters as illustrated in the `initWithWidth:height:` example below.
+The usage of the word "and" is reserved. It should not be used for multiple parameters as illustrated in the `initWithWidth:height:` example below.
 
 **Preferred:**
 ```objc
@@ -378,7 +378,7 @@ The usage of the word "and" is reserved.  It should not be used for multiple par
 - (void)sendAction:(SEL)aSelector :(id)anObject :(BOOL)flag;
 - (id)taggedView:(NSInteger)tag;
 - (instancetype)initWithWidth:(CGFloat)width andHeight:(CGFloat)height;
-- (instancetype)initWith:(int)width and:(int)height;  // Never do this.
+- (instancetype)initWith:(int)width and:(int)height; // Never do this.
 ```
 
 ## Variables
@@ -407,7 +407,6 @@ Direct access to instance variables that 'back' properties should be avoided exc
 }
 ```
 
-
 ## Property Attributes
 
 Property attributes should be explicitly listed, and will help new programmers when reading the code. The order of properties should be: `storage` (weak, strong, assign, copy), `atomicity` (atomic, nonatomic), `nullability` (nullable, nonnull), `access` (readonly, readwrite), and `getter/setter`.
@@ -427,7 +426,7 @@ Property attributes should be explicitly listed, and will help new programmers w
 ```
 
 Properties with mutable counterparts (e.g. `NSString`) should prefer `copy` instead of `strong`. 
-Why? Even if you declared a property as `NSString` somebody might pass in an instance of an `NSMutableString` and then change it without you noticing that.  
+Why? Even if you declared a property as `NSString` somebody might pass in an instance of an `NSMutableString` and then change it without you noticing that.
 
 **Preferred:**
 ```objc
@@ -441,7 +440,7 @@ Why? Even if you declared a property as `NSString` somebody might pass in an ins
 
 ## Dot-Notation Syntax
 
-Dot syntax is purely a convenient wrapper around accessor method calls. When you use dot syntax, the property is still accessed or changed using getter and setter methods.  Read more [here](https://developer.apple.com/library/ios/documentation/cocoa/conceptual/ProgrammingWithObjectiveC/EncapsulatingData/EncapsulatingData.html)
+Dot syntax is purely a convenient wrapper around accessor method calls. When you use dot syntax, the property is still accessed or changed using getter and setter methods. Read more [here](https://developer.apple.com/library/ios/documentation/cocoa/conceptual/ProgrammingWithObjectiveC/EncapsulatingData/EncapsulatingData.html)
 
 Dot-notation should **always** be used for accessing and mutating properties, as it makes code more concise. Bracket notation is preferred in all other instances.
 
@@ -569,8 +568,7 @@ typedef NS_ENUM(NSInteger, FooType) {
 
 ## Case Statements
 
-Braces are not required for case statements, unless enforced by the complier.  
-When a case contains more than one line, braces should be added.
+Braces are not required for case statements, unless enforced by the complier. When a case contains more than one line, braces should be added.
 
 ```objc
 switch (condition) {
@@ -592,7 +590,7 @@ switch (condition) {
 
 ```
 
-There are times when the same code can be used for multiple cases, and a fall-through should be used.  A fall-through is the removal of the 'break' statement for a case thus allowing the flow of execution to pass to the next case value.  A fall-through should be commented for coding clarity.
+There are times when the same code can be used for multiple cases, and a fall-through should be used. A fall-through is the removal of the 'break' statement for a case thus allowing the flow of execution to pass to the next case value. A fall-through should be commented for coding clarity.
 
 ```objc
 switch (condition) {
@@ -608,8 +606,9 @@ switch (condition) {
 
 ```
 
-When using an enumerated type for a switch, 'default' is not needed.   For example:
+When using an enumerated type for a switch, 'default' is not needed.
 
+**For example:**
 ```objc
 RWTLeftMenuTopItemType menuType = RWTLeftMenuTopItemMain;
 
@@ -625,7 +624,6 @@ switch (menuType) {
     break;
 }
 ```
-
 
 ## Private Properties
 
@@ -645,7 +643,7 @@ Private properties should be declared in class extensions (anonymous categories)
 
 ## Booleans
 
-Objective-C uses `YES` and `NO`.  Therefore `true` and `false` should only be used for CoreFoundation, C or C++ code.  Since `nil` resolves to `NO` it is unnecessary to compare it in conditions. Never compare something directly to `YES`, because `YES` is defined to 1 and a `BOOL` can be up to 8 bits.
+Objective-C uses `YES` and `NO`. Therefore `true` and `false` should only be used for CoreFoundation, C or C++ code. Since `nil` resolves to `NO` it is unnecessary to compare it in conditions. Never compare something directly to `YES`, because `YES` is defined to 1 and a `BOOL` can be up to 8 bits.
 
 This allows for more consistency across files and greater visual clarity.
 
@@ -699,7 +697,7 @@ if (!error) return success;
 
 The Ternary operator, `?:` , should only be used when it increases clarity or code neatness. A single condition is usually all that should be evaluated. Evaluating multiple conditions is usually more understandable as an `if` statement, or refactored into instance variables. In general, the best use of the ternary operator is during assignment of a variable and deciding which value to use.
 
-Non-boolean variables should be compared against something, and parentheses are added for improved readability.  If the variable being compared is a boolean type, then no parentheses are needed.
+Non-boolean variables should be compared against something, and parentheses are added for improved readability. If the variable being compared is a boolean type, then no parentheses are needed.
 
 **Preferred:**
 ```objc
@@ -717,7 +715,7 @@ result = a > b ? x = c > d ? c : d : y;
 
 ## Init Methods
 
-Init methods should follow the convention provided by Apple's generated code template.  A return type of 'instancetype' should also be used instead of 'id'.
+Init methods should follow the convention provided by Apple's generated code template. A return type of 'instancetype' should also be used instead of 'id'.
 
 ```objc
 - (instancetype)init {
@@ -775,7 +773,7 @@ CGRect frame = (CGRect){ .origin = CGPointZero, .size = frame.size };
 
 ## Golden Path
 
-When coding with conditionals, the left hand margin of the code should be the "golden" or "happy" path.  That is, don't nest `if` statements.  Multiple return statements are OK.
+When coding with conditionals, the left hand margin of the code should be the "golden" or "happy" path. That is, don't nest `if` statements. Multiple return statements are OK.
 
 **Preferred:**
 
@@ -822,7 +820,6 @@ if (error) {
 
 Some of Apple’s APIs write garbage values to the error parameter (if non-NULL) in successful cases, so switching on the error can cause false negatives (and subsequently crash).
 
-
 ## Singletons
 
 Singleton objects should use a thread-safe pattern for creating their shared instance.
@@ -840,7 +837,6 @@ Singleton objects should use a thread-safe pattern for creating their shared ins
 ```
 This will prevent [possible and sometimes prolific crashes](http://cocoasamurai.blogspot.com/2011/04/singletons-your-doing-them-wrong.html).
 
-
 ## Line Breaks
 
 Line breaks are an important topic since this style guide is focused for print and online readability.
@@ -855,10 +851,9 @@ self.productsRequest = [[SKProductsRequest alloc]
   initWithProductIdentifiers:productIdentifiers];
 ```
 
-
 ## Smiley Face
 
-Smiley faces are a very prominent style feature of the raywenderlich.com site!  It is very important to have the correct smile signifying the immense amount of happiness and excitement for the coding topic.  The end square bracket is used because it represents the largest smile able to be captured using ascii art.  A half-hearted smile is represented if an end parenthesis is used, and thus not preferred.
+Smiley faces are a very prominent style feature of the raywenderlich.com site! It is very important to have the correct smile signifying the immense amount of happiness and excitement for the coding topic. The end square bracket is used because it represents the largest smile able to be captured using ascii art. A half-hearted smile is represented if an end parenthesis is used, and thus not preferred.
 
 **Preferred:**
 ```objc
@@ -868,8 +863,7 @@ Smiley faces are a very prominent style feature of the raywenderlich.com site!  
 **Not Preferred:**
 ```objc
 :)
-```  
-
+```
 
 ## Xcode project
 
