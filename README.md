@@ -21,6 +21,7 @@ Here are some of the documents from Apple that informed the style guide. If some
   * [Tests](#tests)
 * [Methods](#methods)
 * [Variables](#variables)
+* [Collections](#collections)
 * [Property Attributes](#property-attributes)
 * [Nullability](#nullability)
 * [Dot-Notation Syntax](#dot-notation-syntax)
@@ -431,6 +432,24 @@ Direct access to instance variables that 'back' properties should be avoided exc
 @interface RWTTutorial : NSObject {
     NSString *tutorialName;
 }
+```
+
+## Collections
+
+It is recommended to explicitly specify the type of elements in a colletion when possible.
+
+**Preferred:**
+```objc
+@property (copy, nonatomic, nullable) NSArray<NSNumber *> *someArray;
+
+@property (copy, nonatomic, nonnull) NSDictionary<NSString *, NSNumber *> *someDictionary;
+```
+
+**Not Preferred:**
+```objc
+@property (copy, nonatomic, nullable) NSArray *someArray;
+
+@property (copy, nonatomic, nonnull) NSDictionary *someDictionary;
 ```
 
 ## Property Attributes
