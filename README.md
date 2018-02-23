@@ -29,7 +29,7 @@ Here are some of the documents from Apple that informed the style guide. If some
 * [Enumerated Types](#enumerated-types)
 * [Case Statements](#case-statements)
 * [Private Properties](#private-properties)
-* [Property Shadowing](property-shadowing)
+* [Property Shadowing](#property-shadowing)
 * [Booleans](#booleans)
 * [Conditionals](#conditionals)
   * [Ternary Operator](#ternary-operator)
