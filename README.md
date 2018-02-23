@@ -29,6 +29,7 @@ Here are some of the documents from Apple that informed the style guide. If some
 * [Enumerated Types](#enumerated-types)
 * [Case Statements](#case-statements)
 * [Private Properties](#private-properties)
+* [Property Shadowing](property-shadowing)
 * [Booleans](#booleans)
 * [Conditionals](#conditionals)
   * [Ternary Operator](#ternary-operator)
@@ -362,13 +363,13 @@ Local variables should not contain underscores.
 
 ### Tests
 
-The following naming convention for tests helps better understand the behavior.
+The following naming convention for tests helps better understand the behavior:
 
 ```objc
 - (void)test<Method|Action|Whatever>_<success|failure>_<expected result="">
 ```
 
-**For example:**
+**For Example:**
 ```objc
 - (void)testAuthorize_success_isTrue {
     // test statements
@@ -472,9 +473,6 @@ It is important to understand, though, that assigning `nil` to a `nonnull` prope
 * If a property is `nonnull`, one guarantees that property will never be a `nil`. Otherwise, if it is `nullable`, we say that sometimes property can turn out to be a `nil`.
 * As for return values, `nonnull` makes sure that the method **won't** return a `nil`; `nullable` return value states that in some cases `nil` can be returned by the method.
 * A `nullable` method parameter highlights that a passed value can turn out to be a `nil`, even if it is not explicitly `nullable` (for instance, `NSDictionary` values accessed by keys); Likewise, one specifies `nonnull` when a passed value might **never** be a `nil`.
-
-### Return Values
-### Method Parameters
 
 ## Dot-Notation Syntax
 
@@ -642,7 +640,7 @@ switch (condition) {
 
 When using an enumerated type for a switch, 'default' is not needed.
 
-**For example:**
+**For Example:**
 ```objc
 RWTLeftMenuTopItemType menuType = RWTLeftMenuTopItemMain;
 
@@ -673,6 +671,30 @@ Private properties should be declared in class extensions (anonymous categories)
 
 @end
 ```
+
+## Property Shadowing
+
+If it is necessary to make a property `readonly` for other classes and `readwrite` inside the class, one shall to declare the property two times: as `readonly` in `.h` file and as `readwrite` in the class extension in `.m` file. All the other attributes of the property must be repeated.
+
+**For Example:**
+```objc
+// In .h file
+@interface MyClass: NSObject
+
+@property (assign, nonatomic, readonly) NSUInteger viewsCount;
+
+@end
+
+
+// In .m file
+@interface MyClass ()
+
+@property (assign, nonatomic, readwrite) NSUInteger viewsCount;
+
+@end
+```
+
+In situations when it is solely needed to initialize a property and never mutate it later, one should not shadow properties. In initializers we directly work with instance variables by means of underscore - `_viewsCount`, and this enables us to ignore `readonly` attribute.
 
 ## Booleans
 
@@ -865,7 +887,7 @@ This will prevent [possible and sometimes prolific crashes](http://cocoasamurai.
 
 ## Line Breaks
 
-For example:
+**For Example:**
 ```objc
 self.productsRequest = [[SKProductsRequest alloc] initWithProductIdentifiers:productIdentifiers];
 ```
