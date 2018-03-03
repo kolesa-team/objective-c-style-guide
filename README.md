@@ -107,6 +107,18 @@ Use `#pragma mark -` to categorize methods in functional groupings and protocol/
 
 * Indent using 4 spaces (This is a default in Xcode. You can verify it in `Preferences → Text Editing → Indentation`). Never indent with tabs.
 * Method braces and other braces (`if`/`else`/`switch`/`while` etc.) always open on the same line as the statement but close on a new line.
+* If the first option in `ternary` operator is deliberately omitted there should **not** be a space between `?` and `:`. 
+
+**Preferred:**
+```objc
+NSString *someString = someString ?: sotherString;
+```
+
+**Not Preferred:**
+```objc
+NSString *someString = someString ? : otherString;
+```
+
 * Any piece of documentation or comment should be preceded with a blank line. Except the cases when such a block immediately follows an opening curly brace.
 
 **Preferred:**
