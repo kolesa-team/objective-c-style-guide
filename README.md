@@ -106,7 +106,6 @@ Use `#pragma mark -` to categorize methods in functional groupings and protocol/
 ## Spacing
 
 * Indent using 4 spaces (This is a default in Xcode. You can verify it in `Preferences → Text Editing → Indentation`). Never indent with tabs.
-* Better not to have lines exceeding 100 characters. The option `Page guide at column: 100` from `Preferences → Text Editing → Editing` can help in this.
 * Method braces and other braces (`if`/`else`/`switch`/`while` etc.) always open on the same line as the statement but close on a new line.
 * Any piece of documentation or comment should be preceded with a blank line. Except the cases when such a block immediately follows an opening curly brace.
 
@@ -1000,16 +999,19 @@ This will prevent [possible and sometimes prolific crashes](http://cocoasamurai.
 
 ## Line Breaks
 
-**For Example:**
-```objc
-self.productsRequest = [[SKProductsRequest alloc] initWithProductIdentifiers:productIdentifiers];
-```
+* Do not have lines exceeding 100 characters. The option `Page guide at column: 100` from `Preferences → Text Editing → Editing` can help in this.
 
-A long line of code like this should be carried on to the second line adhering to this style guide's Spacing section.
+* A long line of code should be carried on to the second line adhering to this style guide's [Spacing](#spacing) section.
 
+**Preferred:**
 ```objc
 self.productsRequest = [[SKProductsRequest alloc] 
     initWithProductIdentifiers:productIdentifiers];
+```
+
+**Not Preferred:**
+```objc
+self.productsRequest = [[SKProductsRequest alloc] initWithProductIdentifiers:productIdentifiers];
 ```
 
 ## Smiley Face
