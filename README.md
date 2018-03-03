@@ -1034,7 +1034,7 @@ When possible, always turn on "Treat Warnings as Errors" in the target's Build S
 
 ## Documentation
 
-Documentation is to be written in the following format:
+Documentation is to be written in _**RUSSIAN**_ in the following format:
 
 ```objc
 /**
