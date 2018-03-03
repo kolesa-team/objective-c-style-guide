@@ -387,6 +387,22 @@ Properties should be camel-case with the leading word being lowercase. Use auto-
 id varnm;
 ```
 
+Unless a method is either a setter or a constructor one should **not** name it starting with the words `set` and `init` respectively. Synonyms should be used instead to avoid confusion.
+
+**Preferred:**
+```objc
+- (void)prepareTableView {
+	// Table View initialization code
+}
+```
+
+**Not Preferred:**
+```objc
+- (void)initTableView {
+	// Table View initialization code
+}
+```
+
 ### Underscores
 
 When using properties, instance variables should always be accessed and mutated using `self.`. This means that all properties will be visually distinct, as they will all be prefaced with `self.`. 
