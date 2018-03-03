@@ -371,6 +371,35 @@ static NSTimeInterval const RWTTutorialViewControllerNavigationFadeAnimationDura
 static NSTimeInterval const fadetime = 1.7;
 ```
 
+A lowercased prefix should be used for method names in categories.
+
+**Preferred:**
+```objc
+@interface NSObject (BFXConvertation)
+
+- (BOOL)bfxIsString;
+
+@end
+```
+
+**Not Preferred:**
+```objc
+@interface NSObject (BFXConvertation)
+
+- (BOOL)BFXIsString;
+
+@end
+```
+
+**Not Preferred:**
+```objc
+@interface NSObject (BFXConvertation)
+
+- (BOOL)isString;
+
+@end
+```
+
 Properties should be camel-case with the leading word being lowercase. Use auto-synthesis for properties rather than manual @synthesize statements unless you have good reason.
 
 **Preferred:**
