@@ -315,6 +315,26 @@ completionHandler:(void (^)(BOOL))completionHandler {
 @end
 ```
 
+* In anonymous categories make sure to have a space between the class name and empty parentheses.
+
+**Preferred:**
+```objc
+@interface SomeClass ()
+
+// something
+
+@end
+```
+
+**Not Preferred:**
+```objc
+@interface SomeClass()
+
+// something
+
+@end
+```
+
 ## Comments
 
 When they are needed, comments should be used to explain **why** a particular piece of code does something. Any comments that are used must be kept up-to-date or deleted.
