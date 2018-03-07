@@ -480,6 +480,20 @@ In situation when it is only necessary to configure an **existing object**, it i
 }
 ```
 
+Likewise, a method responsible for providing an instance of `UITableViewCell` or `UICollectionViewCell` with needed data, should be named starting with the word `configure`.
+
+**Preferred:**
+```objc
+UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:.......];
+[cell configureWithSomeEntity:someEntity];
+```
+
+**Not Preferred:**
+```objc
+UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:.......];
+[cell assignSomeEntity:someEntity];
+```
+
 ### Underscores
 
 When using properties, instance variables should always be accessed and mutated using `self.`. This means that all properties will be visually distinct, as they will all be prefaced with `self.`. 
