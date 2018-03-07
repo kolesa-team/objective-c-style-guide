@@ -427,19 +427,56 @@ Properties should be camel-case with the leading word being lowercase. Use auto-
 id varnm;
 ```
 
-Unless a method is either a setter or a constructor one should **not** name it starting with the words `set` and `init` respectively. Synonyms should be used instead to avoid confusion.
+To avoid confusion one should **not** name a method starting with the words `set` and `init` unless it is either a setter or a constructor respectively.
+Specifically when a developer creates something from scratch they should name the method starting with the word `setup`.
 
 **Preferred:**
 ```objc
-- (void)prepareTableView {
-	// Table View initialization code
+- (void)setupLogoutButton {
+    UIBarButtonItem *logoutItem = [[UIBarButtonItem alloc] initWithTitle:.......];
+    [self.navigationItem setRightBarButtonItem:logoutItem animated:YES];
+}
+```
+
+**Not Preferred:**
+```objc
+- (void)setLogoutButton {
+    UIBarButtonItem *logoutItem = [[UIBarButtonItem alloc] initWithTitle:.......];
+    [self.navigationItem setRightBarButtonItem:logoutItem animated:YES];
+}
+```
+
+**Not Preferred:**
+```objc
+- (void)initLogoutButton {
+    UIBarButtonItem *logoutItem = [[UIBarButtonItem alloc] initWithTitle:.......];
+    [self.navigationItem setRightBarButtonItem:logoutItem animated:YES];
+}
+```
+
+In situation when it is only necessary to configure an **existing object**, it is recommended to name a method starting with the word `configure`.
+
+**Preferred:**
+```objc
+- (void)configureTableView {
+    self.tableView.dataSource = self.dataProvider;
+    [self.tableView registerNib:.......];
 }
 ```
 
 **Not Preferred:**
 ```objc
 - (void)initTableView {
-	// Table View initialization code
+    self.tableView.dataSource = self.dataProvider;
+    [self.tableView registerNib:.......];
+}
+```
+
+**Not Preferred:**
+```objc
+- (void)setTableView {
+    self.tableView.dataSource = self.dataProvider;
+    [self.tableView registerNib:.......];
 }
 ```
 
