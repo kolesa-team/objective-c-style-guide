@@ -106,8 +106,19 @@ Use `#pragma mark -` to categorize methods in functional groupings and protocol/
 ## Spacing
 
 * Indent using 4 spaces (This is a default in Xcode. You can verify it in `Preferences → Text Editing → Indentation`). Never indent with tabs.
-* Better not to have lines exceeding 100 characters. The option `Page guide at column: 100` from `Preferences → Text Editing → Editing` can help in this.
 * Method braces and other braces (`if`/`else`/`switch`/`while` etc.) always open on the same line as the statement but close on a new line.
+* If the first option in a ternary operator is deliberately omitted there should **not** be a space between `?` and `:`. 
+
+**Preferred:**
+```objc
+NSString *someString = someString ?: sotherString;
+```
+
+**Not Preferred:**
+```objc
+NSString *someString = someString ? : otherString;
+```
+
 * Any piece of documentation or comment should be preceded with a blank line. Except the cases when such a block immediately follows an opening curly brace.
 
 **Preferred:**
@@ -315,6 +326,26 @@ completionHandler:(void (^)(BOOL))completionHandler {
 @end
 ```
 
+* In anonymous categories make sure to have a space between the class name and empty parentheses.
+
+**Preferred:**
+```objc
+@interface SomeClass ()
+
+// something
+
+@end
+```
+
+**Not Preferred:**
+```objc
+@interface SomeClass()
+
+// something
+
+@end
+```
+
 ## Comments
 
 When they are needed, comments should be used to explain **why** a particular piece of code does something. Any comments that are used must be kept up-to-date or deleted.
@@ -351,6 +382,35 @@ static NSTimeInterval const RWTTutorialViewControllerNavigationFadeAnimationDura
 static NSTimeInterval const fadetime = 1.7;
 ```
 
+A lowercased prefix should be used for method names in categories.
+
+**Preferred:**
+```objc
+@interface NSObject (BFXConvertation)
+
+- (BOOL)bfxIsString;
+
+@end
+```
+
+**Not Preferred:**
+```objc
+@interface NSObject (BFXConvertation)
+
+- (BOOL)BFXIsString;
+
+@end
+```
+
+**Not Preferred:**
+```objc
+@interface NSObject (BFXConvertation)
+
+- (BOOL)isString;
+
+@end
+```
+
 Properties should be camel-case with the leading word being lowercase. Use auto-synthesis for properties rather than manual @synthesize statements unless you have good reason.
 
 **Preferred:**
@@ -365,6 +425,73 @@ Properties should be camel-case with the leading word being lowercase. Use auto-
 **Not Preferred:**
 ```objc
 id varnm;
+```
+
+To avoid confusion one should **not** name a method starting with the words `set` and `init` unless it is either a setter or a constructor respectively.
+Specifically when a developer creates something from scratch they should name the method starting with the word `setup`.
+
+**Preferred:**
+```objc
+- (void)setupLogoutButton {
+    UIBarButtonItem *logoutItem = [[UIBarButtonItem alloc] initWithTitle:.......];
+    [self.navigationItem setRightBarButtonItem:logoutItem animated:YES];
+}
+```
+
+**Not Preferred:**
+```objc
+- (void)setLogoutButton {
+    UIBarButtonItem *logoutItem = [[UIBarButtonItem alloc] initWithTitle:.......];
+    [self.navigationItem setRightBarButtonItem:logoutItem animated:YES];
+}
+```
+
+**Not Preferred:**
+```objc
+- (void)initLogoutButton {
+    UIBarButtonItem *logoutItem = [[UIBarButtonItem alloc] initWithTitle:.......];
+    [self.navigationItem setRightBarButtonItem:logoutItem animated:YES];
+}
+```
+
+In situation when it is only necessary to configure an **existing object**, it is recommended to name a method starting with the word `configure`.
+
+**Preferred:**
+```objc
+- (void)configureTableView {
+    self.tableView.dataSource = self.dataProvider;
+    [self.tableView registerNib:.......];
+}
+```
+
+**Not Preferred:**
+```objc
+- (void)initTableView {
+    self.tableView.dataSource = self.dataProvider;
+    [self.tableView registerNib:.......];
+}
+```
+
+**Not Preferred:**
+```objc
+- (void)setTableView {
+    self.tableView.dataSource = self.dataProvider;
+    [self.tableView registerNib:.......];
+}
+```
+
+Likewise, a method responsible for providing an instance of `UITableViewCell` or `UICollectionViewCell` with needed data, should be named starting with the word `configure`.
+
+**Preferred:**
+```objc
+UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:.......];
+[cell configureWithSomeEntity:someEntity];
+```
+
+**Not Preferred:**
+```objc
+UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:.......];
+[cell assignSomeEntity:someEntity];
 ```
 
 ### Underscores
@@ -935,16 +1062,19 @@ This will prevent [possible and sometimes prolific crashes](http://cocoasamurai.
 
 ## Line Breaks
 
-**For Example:**
-```objc
-self.productsRequest = [[SKProductsRequest alloc] initWithProductIdentifiers:productIdentifiers];
-```
+* Do not have lines exceeding 100 characters. The option `Page guide at column: 100` from `Preferences → Text Editing → Editing` can help in this.
 
-A long line of code like this should be carried on to the second line adhering to this style guide's Spacing section.
+* A long line of code should be carried on to the second line adhering to this style guide's [Spacing](#spacing) section.
 
+**Preferred:**
 ```objc
 self.productsRequest = [[SKProductsRequest alloc] 
     initWithProductIdentifiers:productIdentifiers];
+```
+
+**Not Preferred:**
+```objc
+self.productsRequest = [[SKProductsRequest alloc] initWithProductIdentifiers:productIdentifiers];
 ```
 
 ## Smiley Face
@@ -969,7 +1099,7 @@ When possible, always turn on "Treat Warnings as Errors" in the target's Build S
 
 ## Documentation
 
-Documentation is to be written in the following format:
+Documentation is to be written in **Russian** in the following format:
 
 ```objc
 /**
