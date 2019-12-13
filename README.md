@@ -21,6 +21,7 @@ Here are some of the documents from Apple that informed the style guide. If some
   * [Tests](#tests)
 * [Methods](#methods)
 * [Variables](#variables)
+* [Blocks](#variables)
 * [Collections](#collections)
 * [Property Attributes](#property-attributes)
 * [Nullability](#nullability)
@@ -572,6 +573,20 @@ Direct access to instance variables that 'back' properties should be avoided exc
 @interface RWTTutorial : NSObject {
     NSString *tutorialName;
 }
+```
+
+## Blocks
+
+During declaration weakSelf || strongSelf for blocks, extra underscores should be omitted.
+
+**Preferred:**
+```objc
+__strong typeof(self)strongSelf = weakSelf;
+```
+
+**Not Preferred:**
+```objc
+__strong __typeof(self)strongSelf = weakSelf;
 ```
 
 ## Collections
